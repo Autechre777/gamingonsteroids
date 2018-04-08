@@ -109,13 +109,10 @@ end
 
 function Viktor:Tick()
 	DontAAPassive = self.Menu.Combo.qAuto:Value()
-	if 		castSpell.state == 0 then
-		    CastingE = false
-		    end
-	-- if self:HasBuff(myHero,"viktorpowertransferreturn") then
+	 if self:HasBuff(myHero,"viktorpowertransferreturn") then
 	if myHero.attackData.endTime - Game.Timer() - myHero.attackData.windDownTime + .3 > .1 then 
         SetMovement(false)
-        -- end
+         end
 	end
 	if CastingE == true then
         if myHero.attackData.endTime - Game.Timer() - myHero.attackData.windDownTime + .3 < .1 then
@@ -737,6 +734,7 @@ function Viktor:OrbWalkerLoad()
 	PrintChat(Scriptname.." "..Version.." - Loaded...."..orbwalkername)
 end
 function EnableMovement()
+	CastingE = false
 	SetMovement(true)
 end
 
