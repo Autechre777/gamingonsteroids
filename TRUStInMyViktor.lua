@@ -108,7 +108,7 @@ end
 
 function Viktor:Tick()
 	DontAAPassive = self.Menu.Combo.qAuto:Value()
-	if myHero.attackData.state == STATE_ATTACK or STATE_WINDUP then 
+	if myHero.attackData.state == STATE_ATTACK or myHero.attackData.state == STATE_WINDUP then 
 	  SetMovement(false)
 	  end
 	if myHero.attackData.state ~= STATE_WINDUP and myHero.attackData.state ~= STATE_ATTACK then 
