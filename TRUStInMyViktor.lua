@@ -111,6 +111,9 @@ function Viktor:Tick()
 	if myHero.attackData.state == STATE_WINDUP then 
 	  SetMovement(false)
 	  end
+	if myHero.attackData.state == STATE_WINDDOWN then 
+	  SetMovement(true)
+	  end
 	if (_G.EOW) then
 		if DontAAPassive and not self:HasBuff(myHero,"viktorpowertransferreturn") and _G.EOW:Mode() == 1 then
 			_G.EOW:SetAttacks(false)
