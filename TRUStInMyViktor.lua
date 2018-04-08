@@ -108,6 +108,9 @@ end
 
 function Viktor:Tick()
 	DontAAPassive = self.Menu.Combo.qAuto:Value()
+	if myHero.attackData.endTime - Game.Timer() - myHero.attackData.windDownTime + .5 > .1 then 
+      SetMovement(false)
+      end
 if myHero.activeSpell and myHero.activeSpell.valid then
         if myHero.activeSpell.name == "ViktorQBuff" then
             local windupRemaining = myHero.activeSpell.startTime + myHero.activeSpell.windup - Game.Timer()
