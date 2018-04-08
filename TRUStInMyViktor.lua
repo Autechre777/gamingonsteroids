@@ -109,12 +109,12 @@ end
 
 function Viktor:Tick()
 	DontAAPassive = self.Menu.Combo.qAuto:Value()
-	 if self:HasBuff(myHero,"viktorpowertransferreturn") then
+	if self:HasBuff(myHero,"viktorpowertransferreturn") then
 	if myHero.attackData.endTime - Game.Timer() - myHero.attackData.windDownTime + .3 > .1 then 
         SetMovement(false)
-         end
+        end
 	end
-	if CastingE == true then
+	if CastingE == false then
         if myHero.attackData.endTime - Game.Timer() - myHero.attackData.windDownTime + .3 < .1 then
         SetMovement(true)
         end
