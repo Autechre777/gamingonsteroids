@@ -113,7 +113,7 @@ function Viktor:Tick()
         SetMovement(false)
         end
 	end
-	if castSpell.state == 0 then
+	if myHero.activeSpell.name ~= "ViktorQBuff" then
         if myHero.attackData.endTime - Game.Timer() - myHero.attackData.windDownTime + .3 < .1 then
         SetMovement(true)
         end
