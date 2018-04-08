@@ -108,17 +108,11 @@ end
 
 function Viktor:Tick()
 	DontAAPassive = self.Menu.Combo.qAuto:Value()
-	if myHero.attackData.endTime - Game.Timer() - myHero.attackData.windDownTime + .5 > .1 then 
-      SetMovement(false)
+	local windupRemaining
+	windupRemaining = myHero.attackData.endTime - Game.Timer() - myHero.attackData.windDownTime + .3
+	if windupRemaining > 0 then
+                SetMovement(windupRemaining < .1)
       end
-if myHero.activeSpell and myHero.activeSpell.valid then
-        if myHero.activeSpell.name == "ViktorQBuff" then
-            local windupRemaining = myHero.activeSpell.startTime + myHero.activeSpell.windup - Game.Timer()
-            if windupRemaining > 0 then
-                SetMovement(windupRemaining < .05)
-            end
-        end
-    end
 	if (_G.EOW) then
 		if DontAAPassive and not self:HasBuff(myHero,"viktorpowertransferreturn") and _G.EOW:Mode() == 1 then
 			_G.EOW:SetAttacks(false)
