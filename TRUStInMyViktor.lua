@@ -108,6 +108,9 @@ end
 
 function Viktor:Tick()
 	DontAAPassive = self.Menu.Combo.qAuto:Value()
+	if myHero.attackData.state == STATE_WINDUP then 
+	  SetMovement(false)
+	  end
 	if (_G.EOW) then
 		if DontAAPassive and not self:HasBuff(myHero,"viktorpowertransferreturn") and _G.EOW:Mode() == 1 then
 			_G.EOW:SetAttacks(false)
@@ -815,8 +818,8 @@ function Viktor:AutoInterrupt(target,ultimate)
 end
 --[[Spells]]
 function Viktor:LoadSpells()
-	Q = {Range = 665}
-	W = {Range = 700, Delay = 0.5, Radius = 300, Speed = math.huge,aoe = true, type = "circular"}
+	Q = {Range = 600}
+	W = {Range = 475, Delay = 0.5, Radius = 300, Speed = math.huge,aoe = true, type = "circular"}
 	E = {Range = 500, MaxRange = 1225, length = 700, width = 90, Delay = 0.25, Speed = 1050, type = "linear"}
 	R = {Range = 700, width = nil, Delay = 0.25, Radius = 300, Speed = 1000, Collision = false, aoe = false, type = "linear"}
 	
