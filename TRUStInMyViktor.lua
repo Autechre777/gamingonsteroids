@@ -226,7 +226,7 @@ function Viktor:Flee()
 end
 function Viktor:RSolo()
 	local target = self:GetSpellTarget(R.Range)
-	if target and target.valid and then
+	if target and target.valid then
 		self:CastSpell(HK_R,target.pos)
 	end
 end
