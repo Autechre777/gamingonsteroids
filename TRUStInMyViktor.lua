@@ -112,11 +112,15 @@ function Viktor:Tick()
 	if myHero.attackData.state == STATE_WINDUP then
 	SetMovement(false)
 	end
+	if CastingE == false then
 	if myHero.attackData.state == STATE_WINDDOWN then
 	SetMovement(true)
 	end
+	end
+	if CastingE == false then
 	if myHero.attackData.state == STATE_ATTACK then
 	SetMovement(true)
+	end
 	end
 	--if self:HasBuff(myHero,"viktorpowertransferreturn") then
 	--if myHero.attackData.endTime - Game.Timer() - myHero.attackData.windDownTime + .3 > .1 then 
