@@ -108,10 +108,11 @@ end
 
 function Viktor:Tick()
 	DontAAPassive = self.Menu.Combo.qAuto:Value()
-	if myHero.attackData.endTime - Game.Timer() - myHero.attackData.windDownTime + .5 > .1 then 
+	if myHero.attackData.endTime - Game.Timer() - myHero.attackData.windDownTime + .3 > .1 then 
 	  SetMovement(false)
 	  end
-	if myHero.attackData.endTime - Game.Timer() - myHero.attackData.windDownTime + .5 < .1 then
+	if myHero.attackData.endTime - Game.Timer() - myHero.attackData.windDownTime + .3 < .1 and
+	  castSpell.state = 0 then
 	  SetMovement(true)
 	  end
 	if (_G.EOW) then
@@ -821,7 +822,7 @@ function Viktor:AutoInterrupt(target,ultimate)
 end
 --[[Spells]]
 function Viktor:LoadSpells()
-	Q = {Range = 625}
+	Q = {Range = 650}
 	W = {Range = 475, Delay = 0.5, Radius = 300, Speed = math.huge,aoe = true, type = "circular"}
 	E = {Range = 500, MaxRange = 1225, length = 700, width = 90, Delay = 0.25, Speed = 1050, type = "linear"}
 	R = {Range = 700, width = nil, Delay = 0.25, Radius = 300, Speed = 1000, Collision = false, aoe = false, type = "linear"}
