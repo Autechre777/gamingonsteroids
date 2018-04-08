@@ -8,6 +8,7 @@ if FileExist(COMMON_PATH .. "Eternal Prediction.lua") then
 end
 local EPrediction = {}
 DontAAPassive = false
+CastingE = false
 
 local castSpell = {state = 0, tick = GetTickCount(), casting = GetTickCount() - 1000, mouse = mousePos}
 function SetMovement(bool)
@@ -108,12 +109,15 @@ end
 
 function Viktor:Tick()
 	DontAAPassive = self.Menu.Combo.qAuto:Value()
+	if 		castSpell.state == 0 then
+		    CastingE = false
+		    end
 	-- if self:HasBuff(myHero,"viktorpowertransferreturn") then
 	if myHero.attackData.endTime - Game.Timer() - myHero.attackData.windDownTime + .3 > .1 then 
         SetMovement(false)
         -- end
 	end
-	if not myHero.activeSpell.valid then
+	if CastingE == true then
         if myHero.attackData.endTime - Game.Timer() - myHero.attackData.windDownTime + .3 < .1 then
         SetMovement(true)
         end
@@ -766,6 +770,7 @@ function Viktor:CastESpell(pos1, pos2)
 	if castSpell.state == 0 and ticker > castSpell.casting then
 		--block movement
 		castSpell.state = 1
+		CastingE = true
 		castSpell.mouse = mousePos
 		castSpell.tick = ticker
 		SetMovement(false)
