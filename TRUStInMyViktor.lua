@@ -111,7 +111,7 @@ function Viktor:Tick()
 	if myHero.attackData.state == STATE_WINDUP then 
 	  SetMovement(false)
 	  end
-	if myHero.attackData.state == STATE_WINDDOWN then 
+	if myHero.attackData.state ~= STATE_WINDUP then 
 	  SetMovement(true)
 	  end
 	if (_G.EOW) then
