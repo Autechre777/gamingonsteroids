@@ -111,8 +111,8 @@ function Viktor:Tick()
 	if myHero.attackData.endTime - Game.Timer() - myHero.attackData.windDownTime + .3 > .1 then 
 	  SetMovement(false)
 	  end
-	if myHero.attackData.endTime - Game.Timer() - myHero.attackData.windDownTime + .3 < .1 and castSpell.state == 0 then
-	  SetMovement(true)
+	if SetMovement(false) then
+	  DelayAction(EnableMovement,0.3)
 	  end
 	if (_G.EOW) then
 		if DontAAPassive and not self:HasBuff(myHero,"viktorpowertransferreturn") and _G.EOW:Mode() == 1 then
